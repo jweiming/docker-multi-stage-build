@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: ali
+      changes:
+        - createTable:
+            tableName: administrators
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+                    
+  - changeSet:
+      id: 2
+      author: ali
+      changes:
+        - insert:
+            tableName: administrators
+            columns:
+              - column:
+                  name: username
+                  value: thor
+              - column:
+                  name: password
+                  value: Welcome#1
+              - column:
+                  name: email
+                  value: thor.odinson@medrec.com
+              - column:
+                  name: country
+                  value: midgard
+
+        - insert:
+            tableName: administrators
+            columns:
+              - column:
+                  name: username
+                  value: ironman
+              - column:
+                  name: password
+                  value: Welcome#1
+              - column:
+                  name: email
+                  value: tony.stark@medrec.com          
+              - column:
+                  name: country
+                  value: USA       
