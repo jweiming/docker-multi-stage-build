@@ -1,7 +1,12 @@
-# docker-multi-stage-build
-Example for using Docker multi stage build to compile and build your application
+# Using Docker Multi-stage Builds
+
+This is an example for using Docker multi stage build to compile and build your application. The application is a Springboot application microservice that uses H2 embedded database.
+
+As we will be building the application completely in-container, we do not need to have Java or Maven (and related dependencies) in our local environment. Docker will handle those parts for us. Take a look at the ```Dockerfile``` below. 
 
 #### Docker multi-stage build
+
+Two containers will be used during the build process. A Maven container (with openjdk) used for the build and a jre-alpine image used for the release container. In this way, the release container will be smaller in size and do not include all the unnecessary dependencies and files.
 
 ```
 FROM maven:3.5.2-jdk-8 as BUILD
@@ -49,3 +54,9 @@ Execute service calls.
 ```
 curl localhost:8080/admin/all
 ```
+
+#### Removing the container
+
+One of my go-to guides for Docker related commands is this [https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes).
+
+Have fun.
